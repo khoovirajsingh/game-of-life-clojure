@@ -2,13 +2,19 @@
   (:gen-class))
 
 (def alive "*")
+
 (def dead ".")
+
+(defn live-cell? [cell] (= cell alive))
+
+(defn dead-cell? [cell] (= cell dead))
 
 (defn create-world
   [row column]
   (vec (repeat row (vec (repeat column dead)))))
 
-(defn live-cell?
-  [cell]
-  (= cell alive))
+(defn regenerate-cell?
+  [cell neighbours]
+  (and (dead-cell? cell) (= neighbours 3)))
+
 

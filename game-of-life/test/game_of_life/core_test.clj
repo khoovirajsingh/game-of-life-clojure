@@ -10,6 +10,13 @@
 (deftest cell-is-alive
   (is (= true (live-cell? alive)))
   (is (= false (live-cell? dead))))
-  
+
+
+(deftest cell-is-dead
+  (is (= true (dead-cell? dead)))
+  (is (= false (dead-cell? alive))))
+
+(deftest regenerate-dead-cell
+  (is (= true (regenerate-cell? dead 3))))
 
 
