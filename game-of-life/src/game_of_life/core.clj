@@ -8,3 +8,7 @@
   [row column]
   (vec (repeat row (vec (repeat column dead)))))
 
+(defn live-cell?
+  [cell]
+  (= cell alive))
+
