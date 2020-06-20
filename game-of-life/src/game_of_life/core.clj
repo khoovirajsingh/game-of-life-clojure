@@ -30,3 +30,21 @@
   [cell neighbours]
   (and (live-cell? cell) (> neighbours 3)))
 
+(defn surrounding-cells
+  [x y world]
+  (let [north-west (get-in world [(- x 1) (- y 1)])
+        north (get-in world [(- x 1) y])
+        north-east (get-in world [(- x 1) (+ y 1)])
+        east (get-in world [x (+ y 1)])
+        south-east (get-in world [(+ x 1) (+ y 1)])
+        south (get-in world [(+ x 1) y])
+        south-west (get-in world [(+ x 1) (- y 1)])
+        west (get-in world [x (- y 1)])]
+   (vector north-west north north-east east south-east south south-west west)))
+
+(defn live-neighbours-count
+  [x y world]
+  (let [cells (surrounding-cells x y world)]
+    (get (frequencies cells) alive 0)))
+
+
