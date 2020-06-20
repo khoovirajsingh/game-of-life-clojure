@@ -25,4 +25,8 @@
   (is (= true (keep-cell-alive? alive 3)))
   (is (= false (keep-cell-alive? alive 1))))
 
+(deftest alive-cell-dies-because-of-underpopulation
+  (is (= true (underpopulation? alive 1)))
+  (is (= false (underpopulation? alive 2))))
+
 

@@ -22,4 +22,7 @@
   (let [suistanable? (or (= neighbours 2) (= neighbours 3))]
     (and (live-cell? cell) suistanable?)))
 
+(defn underpopulation?
+  [cell neighbours]
+  (and (live-cell? cell) (< neighbours 2)))
 
