@@ -2,6 +2,5 @@
   (:require [clojure.test :refer :all]
             [game-of-life.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest empty-world-is-represented-in-2d
+  (is (= [[""]] (create-empty-world 1 1))))
