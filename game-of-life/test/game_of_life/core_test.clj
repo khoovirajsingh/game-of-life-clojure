@@ -1,6 +1,7 @@
 (ns game-of-life.core-test
   (:require [clojure.test :refer :all]
             [game-of-life.core :refer :all]))
+
 (def world-1-by-1 [[dead]])
 (def next-world-1-by-1 [[dead]])
 
@@ -9,6 +10,11 @@
 
 (def world-3-by-3 [[dead alive dead] [alive alive alive] [dead alive dead]])
 (def next-world-3-by-3 [[alive alive alive] [alive dead alive] [alive alive dead]])
+
+(deftest compute-next-generation-acceptance-tests
+  (is (= world-1-by-1 (next-generation next-world-1-by-1)))
+  (is (= world-2-by-2 (next-generation next-world-2-by-2)))
+  (is (= world-3-by-3 (next-generation next-world-3-by-3))))
 
 (deftest new-world-is-represented-in-2d-with-dead-cells
   (is (= [[dead]] (create-world 1 1)))
@@ -40,8 +46,9 @@
   (is (= false (overcrowded? alive 3))))
 
 (deftest live-neighbours-count-for-each-cell
-  (let [x 0
-        y 0]
-    (is (= 0 (live-neighbours-count x y world-1-by-1)))))
+  (is (= 0 (live-neighbours-count 0 0 world-1-by-1)))
+  (is (= 0 (live-neighbours-count 0 0 world-2-by-2)))
+  (is (= 1 (live-neighbours-count 0 1 world-2-by-2)))
+  (is (= 4 (live-neighbours-count 1 1 world-3-by-3))))
 
 

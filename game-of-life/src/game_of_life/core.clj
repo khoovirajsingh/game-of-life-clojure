@@ -47,4 +47,8 @@
   (let [cells (surrounding-cells x y world)]
     (get (frequencies cells) alive 0)))
 
+(defn next-generation
+  [world]
+  (vector alive))
+
 
