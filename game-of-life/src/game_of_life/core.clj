@@ -1,7 +1,10 @@
 (ns game-of-life.core
   (:gen-class))
 
-(defn create-empty-world
+(def alive "*")
+(def dead ".")
+
+(defn create-world
   [row column]
-  (vec (repeat row (vec (repeat column "")))))
+  (vec (repeat row (vec (repeat column dead)))))
 

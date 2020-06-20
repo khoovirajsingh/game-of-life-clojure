@@ -2,5 +2,8 @@
   (:require [clojure.test :refer :all]
             [game-of-life.core :refer :all]))
 
-(deftest empty-world-is-represented-in-2d
-  (is (= [[""]] (create-empty-world 1 1))))
+(deftest new-world-is-represented-in-2d-with-dead-cells
+         (is (= [[dead]] (create-world 1 1)))
+  (is (= [[dead dead] [dead dead]] (create-world 2 2))))
+
+
