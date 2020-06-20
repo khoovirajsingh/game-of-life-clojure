@@ -17,6 +17,12 @@
   (is (= false (dead-cell? alive))))
 
 (deftest regenerate-dead-cell
+  (is (= false (regenerate-cell? dead 2)))
   (is (= true (regenerate-cell? dead 3))))
+
+(deftest alive-cell-survives
+  (is (= true (keep-cell-alive? alive 2)))
+  (is (= true (keep-cell-alive? alive 3)))
+  (is (= false (keep-cell-alive? alive 1))))
 
 

@@ -17,4 +17,9 @@
   [cell neighbours]
   (and (dead-cell? cell) (= neighbours 3)))
 
+(defn keep-cell-alive?
+  [cell neighbours]
+  (let [suistanable? (or (= neighbours 2) (= neighbours 3))]
+    (and (live-cell? cell) suistanable?)))
+
 
