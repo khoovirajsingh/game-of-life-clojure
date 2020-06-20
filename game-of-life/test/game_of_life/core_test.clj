@@ -20,13 +20,17 @@
   (is (= false (regenerate-cell? dead 2)))
   (is (= true (regenerate-cell? dead 3))))
 
-(deftest alive-cell-survives
+(deftest live-cell-survives
   (is (= true (keep-cell-alive? alive 2)))
   (is (= true (keep-cell-alive? alive 3)))
   (is (= false (keep-cell-alive? alive 1))))
 
-(deftest alive-cell-dies-because-of-underpopulation
+(deftest live-cell-dies-because-of-underpopulation
   (is (= true (underpopulation? alive 1)))
   (is (= false (underpopulation? alive 2))))
+
+(deftest live-cell-dies-because-of-overcrowding
+  (is (= true (overcrowded? alive 4)))
+  (is (= false (overcrowded? alive 3))))
 
 

@@ -26,3 +26,7 @@
   [cell neighbours]
   (and (live-cell? cell) (< neighbours 2)))
 
+(defn overcrowded?
+  [cell neighbours]
+  (and (live-cell? cell) (> neighbours 3)))
+
