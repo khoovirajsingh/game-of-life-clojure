@@ -47,8 +47,28 @@
   (let [cells (surrounding-cells x y world)]
     (get (frequencies cells) alive 0)))
 
+(defn new-state
+  [cell neighbours]
+  (cond
+    (regenerate-cell? cell neighbours) alive
+    (keep-cell-alive? cell neighbours) alive
+    (underpopulation? cell neighbours) dead
+    (overcrowded? cell neighbours) dead
+    :else cell))    
+
 (defn next-generation
   [world]
-  (vector alive))
+  (vec (for [row (range (count world))]
+        (vec (for [column (range (count world))]
+               (new-state 
+                 (get-in world [row column]) 
+                 (live-neighbours-count row column world)))))))
+                 
+
+
+
+    
+
+
 
 

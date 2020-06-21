@@ -45,6 +45,9 @@
   (is (= true (overcrowded? alive 4)))
   (is (= false (overcrowded? alive 3))))
 
+(deftest new-state-of-cell
+  (is (= alive (new-state dead 3))))
+
 (deftest live-neighbours-count-for-each-cell
   (is (= 0 (live-neighbours-count 0 0 world-1-by-1)))
   (is (= 0 (live-neighbours-count 0 0 world-2-by-2)))
